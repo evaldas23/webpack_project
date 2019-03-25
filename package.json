@@ -13,10 +13,10 @@
     "redux-thunk": "^2.3.0",
     "reset-css": "^4.0.1"
   },
-"scripts": {
-  "biuld": "webpack --config webpack.config.prod.js",
-  "develop": "webpack-dev-server --config webpack.config.dev.js --color"
-},
+  "scripts": {
+    "build": "webpack --config webpack.config.prod.js",
+    "develop": "webpack-dev-server --config webpack.config.dev.js --color"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -35,6 +35,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -52,6 +53,7 @@
     "sass-loader": "^7.1.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
   }
 }

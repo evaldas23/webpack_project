@@ -1,41 +1,9 @@
-const path = require("path");
-const fs = require("fs");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const merge = require("webpack-merge");
+const baseWebpack = require("./webpack.config.base");
 
-const babelrc = JSON.parse(fs.readFileSync("./.babelrc"));
-
-module.exports = {
-  entry: ["@babel/polyfill", "./src/index.js"],
-  output: {
-    filename: "index.bundle.js",
-    path: path.resolve(__dirname, "build"),
-  },
+module.exports = merge.smart(baseWebpack, {
   mode: "development",
-  module: {
-    rules: [
-      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] },
-      {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-      {
-        test: /\.js$/,
-        exclude: "/node_modules/",
-        use: {
-          loader: "babel-loader",
-          options: babelrc,
-        },
-      },
-    ],
-  },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: "index.bundle.css" }),
-    new webpack.ProgressPlugin(),
-    new HtmlWebpackPlugin({ template: "./public/index.html" }),
-  ],
   devServer: {
     port: 9000,
   },
-};
+});
